@@ -22,11 +22,12 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use((req, res, next) => {
-    res.render('maintenance.hbs', {
-        pageTitle: 'Hello, the website is updating... to bad :('
-    })
-})
+// Used to stop the website continue on
+// app.use((req, res, next) => {
+//     res.render('maintenance.hbs', {
+//         pageTitle: 'Hello, the website is updating... to bad :('
+//     })
+// })
 
 hbs.registerHelper('getCurrentYear', () => {
     return new Date().getFullYear();
@@ -49,10 +50,18 @@ app.get('/', (req, res) => {
 // Get - about
 app.get('/about', (req, res) => {
     res.render('about.hbs', {
-        pageTitle: 'About page',
-        currentYear: new Date().getFullYear()
+        pageTitle: 'About page'
     });
 });
+
+// Get - Projects
+app.get('/projects', (req, res) => {
+    res.render('projects.hbs', {
+        pageTitle: 'My projects',
+        someText: 'This is to show all my project which I have some far'
+    })
+
+})
 
 
 // Get - bad
